@@ -11,15 +11,23 @@ pool:
    demands:
    - agent.name -equals VG2SANDBXGEN165
 
-steps:
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
+# steps:
+# - task: PowerShell@2
+#   inputs:
+#     targetType: 'inline'
+#     script: |
+#       # Write your PowerShell commands here.
       
-      Write-Host "Hello World"
+#       Write-Host "Hello World"
 
+jobs:
+- job: Debug
+  steps:
+  - script: echo hello from the Debug build
+- job: Release
+  dependsOn: Debug
+  steps:
+  - script: echo hello from the Release build
 # strategy:
 #   matrix:
 #     Python27:
