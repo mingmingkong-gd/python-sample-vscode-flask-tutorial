@@ -27,7 +27,7 @@ jobs:
 - job: Release
   dependsOn: Debug
   steps:
-  - script: echo hello from the Release build .
+  - script: echo hello from the Release build test
 # strategy:
 #   matrix:
 #     Python27:
