@@ -6,11 +6,11 @@
 trigger:
 - master
 
-pool:
-   name: az400m05l05a-pool
-   demands:
-   - agent.name -equals VG2SANDBXGEN165
-
+# pool:
+  #  name: az400m05l05a-pool
+  #  demands:
+  #  - agent.name -equals VG2SANDBXGEN165
+pool: Default
 # steps:
 # - task: PowerShell@2
 #   inputs:
