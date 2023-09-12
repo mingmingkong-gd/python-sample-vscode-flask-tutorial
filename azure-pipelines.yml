@@ -5,6 +5,7 @@
 
 trigger:
 - master
+- release
 
 # pool:
   #  name: az400m05l05a-pool
