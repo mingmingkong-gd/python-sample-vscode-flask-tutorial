@@ -8,6 +8,11 @@ resources:
     - repository: python-sample-vscode-flask-tutorial
       type: github
       name: python-sample-vscode-flask-tutorial
+      endpoint: kmmtestendpoint
+    - repository: kmmtestrepo
+      type: github
+      name: kmmtestrepo
+      endpoint: kmmtestendpoint
 
 
 
@@ -26,7 +31,9 @@ pool: Default
 jobs:
 - job: testb
   steps:
-  - checkout: python-sample-vscode-flask-tutorial
+  - checkout: self
+  - checkout: kmmtestrepo
+  
   - task: Bash@3
     inputs:
       targetType: 'inline'
