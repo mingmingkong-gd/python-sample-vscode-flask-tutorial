@@ -22,10 +22,10 @@ pool: Default
 #       Write-Host "Hello World"
 
 jobs:
-- job: echo test
+- job: test abc
   steps:
   - script: echo hello from the Debug build
-- job: test variable
+- job: test second
   steps:
   - task: Bash@3
     inputs:
