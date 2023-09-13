@@ -7,7 +7,6 @@ resources:
   repositories:
     - repository: python-sample-vscode-flask-tutorial
       type: github
-      endpoint: AZURE-POC-SANDBOX
       name: python-sample-vscode-flask-tutorial
 
 
