@@ -37,7 +37,7 @@ jobs:
         
         echo "the  Build.BuildNumber is $(Build.BuildNumber)"
         echo " current workspace is $(Agent.BuildDirectory)"
-        echo "current directory is : $(pwd)"
+        echo "current directory is $(pwd)"
 # strategy:
 #   matrix:
 #     Python27:
