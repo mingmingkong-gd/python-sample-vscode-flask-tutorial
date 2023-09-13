@@ -22,13 +22,22 @@ pool: Default
 #       Write-Host "Hello World"
 
 jobs:
-- job: Debug
+- job: echo test
   steps:
   - script: echo hello from the Debug build
-- job: Release
+- job: test variavle
   dependsOn: Debug
+
   steps:
-  - script: echo hello from the Release build  this is new version test again
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your commands here
+        
+        echo "the  Build.BuildNumber is $(Build.BuildNumber)"
+        echo " current workspace is $(Agent.BuildDirectory)"
+        echo "current directory is : $(pwd)"
 # strategy:
 #   matrix:
 #     Python27:
