@@ -7,24 +7,11 @@ trigger:
 - master
 - release
 
-# pool:
-  #  name: az400m05l05a-pool
-  #  demands:
-  #  - agent.name -equals VG2SANDBXGEN165
+
 pool: Default
-# steps:
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Write your PowerShell commands here.
-      
-#       Write-Host "Hello World"
+
 
 jobs:
-- job: testa
-  steps:
-  - script: echo hello from the Debug build
 - job: testb
   steps:
   - task: Bash@3
@@ -33,31 +20,5 @@ jobs:
       script: |
         # Write your commands here       
         #echo "the  Build.BuildNumber is $(Build.BuildNumber)"
-        #echo " current workspace is $(Agent.BuildDirectory)"
+        echo " current workspace is $(Agent.BuildDirectory)"
         echo testabc
-# strategy:
-#   matrix:
-#     Python27:
-#       python.version: '2.7'
-#     Python35:
-#       python.version: '3.5'
-#     Python36:
-#       python.version: '3.6'
-#     Python37:
-#       python.version: '3.7'
-
-# steps:
-# - task: UsePythonVersion@0
-#   inputs:
-#     versionSpec: '$(python.version)'
-#   displayName: 'Use Python $(python.version)'
-
-# - script: |
-#     python -m pip install --upgrade pip
-#     pip install -r requirements.txt
-#   displayName: 'Install dependencies'
-
-# - script: |
-#     pip install pytest pytest-azurepipelines
-#     pytest
-#   displayName: 'pytest'
