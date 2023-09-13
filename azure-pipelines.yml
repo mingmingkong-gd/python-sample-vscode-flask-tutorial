@@ -26,7 +26,7 @@ jobs:
   steps:
   - script: echo hello from the Debug build
 - job: test variavle
-  dependsOn: Debug
+
 
   steps:
   - task: Bash@3
