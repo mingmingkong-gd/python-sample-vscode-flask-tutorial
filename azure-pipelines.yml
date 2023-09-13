@@ -5,10 +5,6 @@
 
 resources:
   repositories:
-    - repository: kmmtestrepo
-      type: github
-      endpoint: AZURE-POC-SANDBOX
-      name: kmmtestrepo
     - repository: python-sample-vscode-flask-tutorial
       type: github
       endpoint: AZURE-POC-SANDBOX
@@ -31,7 +27,6 @@ pool: Default
 jobs:
 - job: testb
   steps:
-  - checkout: self
   - checkout: python-sample-vscode-flask-tutorial
   - task: Bash@3
     inputs:
