@@ -3,6 +3,21 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
+resources:
+  repositories:
+    - repository: kmmtestrepo
+      type: github
+      endpoint: AZURE-POC-SANDBOX
+      name: kmmtestrepo
+    - repository: python-sample-vscode-flask-tutorial
+      type: github
+      endpoint: AZURE-POC-SANDBOX
+      name: python-sample-vscode-flask-tutorial
+
+
+
+
+
 trigger:
 - master
 - release
@@ -17,6 +32,7 @@ jobs:
 - job: testb
   steps:
   - checkout: self
+  - checkout: python-sample-vscode-flask-tutorial
   - task: Bash@3
     inputs:
       targetType: 'inline'
