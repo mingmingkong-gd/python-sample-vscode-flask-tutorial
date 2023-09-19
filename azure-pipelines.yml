@@ -3,16 +3,16 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
-resources:
-  repositories:
-    - repository: python-sample-vscode-flask-tutorial
-      type: github
-      name: python-sample-vscode-flask-tutorial
-      endpoint: ado-test
-    - repository: kmmtestrepo
-      type: github
-      name: kmmtestrepo
-      endpoint: ado-test
+# resources:
+#   repositories:
+#     - repository: python-sample-vscode-flask-tutorial
+#       type: github
+#       name: python-sample-vscode-flask-tutorial
+#       endpoint: ado-test
+#     - repository: kmmtestrepo
+#       type: github
+#       name: kmmtestrepo
+#       endpoint: ado-test
 
 
 
@@ -31,8 +31,8 @@ pool: Default
 jobs:
 - job: testb
   steps:
-  - checkout: self
-  - checkout: kmmtestrepo
+  # - checkout: self
+  # - checkout: kmmtestrepo
   
   - task: Bash@3
     inputs:
