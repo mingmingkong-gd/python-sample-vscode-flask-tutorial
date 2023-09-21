@@ -16,14 +16,14 @@
 
 variables:
   ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: 
-    deployTarget: master
-  ${{ if eq(variables['Build.SourceBranchName'], 'RE-11234') }}: 
-    deployTarget: dev
+    trigger_branch: master
+  ${{ if eq(variables['Build.SourceBranchName'], 'release') }}: 
+    trigger_branch: release
 
 
 
 trigger:
-- master
+- $(trigger_branch)/*
 
 
 
@@ -49,7 +49,7 @@ jobs:
         echo " current workspace is $(Agent.BuildDirectory)"
         echo "current dir is  $(Build.SourcesDirectory)"
         echo "source branch is $(Build.SourceBranch)"
-        echo "deploy tartget is $(deployTarget)"
+        echo "trigger branch is $(trigger_branch)"
         echo testabc
 
 
