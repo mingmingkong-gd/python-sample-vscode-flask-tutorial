@@ -3,55 +3,54 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
+# resources:
+#   repositories:
+#     - repository: python-sample-vscode-flask-tutorial
+#       type: github
+#       name: python-sample-vscode-flask-tutorial
+#       endpoint: ado-test
+#     - repository: kmmtestrepo
+#       type: github
+#       name: kmmtestrepo
+#       endpoint: ado-test
+
+variables:
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: 
+    deployTarget: master
+  ${{ if eq(variables['Build.SourceBranchName'], 'RE-11234') }}: 
+    deployTarget: dev
+
+
+
 trigger:
 - master
-- release
 
-# pool:
-  #  name: az400m05l05a-pool
-  #  demands:
-  #  - agent.name -equals VG2SANDBXGEN165
+
+
+
+
+
 pool: Default
-# steps:
-# - task: PowerShell@2
-#   inputs:
-#     targetType: 'inline'
-#     script: |
-#       # Write your PowerShell commands here.
-      
-#       Write-Host "Hello World"
+
 
 jobs:
-- job: Debug
+- job: testb
   steps:
-  - script: echo hello from the Debug build
-- job: Release
-  dependsOn: Debug
-  steps:
-  - script: echo hello from the Release build  this is new version test again
-# strategy:
-#   matrix:
-#     Python27:
-#       python.version: '2.7'
-#     Python35:
-#       python.version: '3.5'
-#     Python36:
-#       python.version: '3.6'
-#     Python37:
-#       python.version: '3.7'
+  # - checkout: self
+  # - checkout: kmmtestrepo
+  - template: template.yml
+  
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your commands here       
+        echo "the  Build.BuildNumber is $(Build.BuildNumber)"
+        echo " current workspace is $(Agent.BuildDirectory)"
+        echo "current dir is  $(Build.SourcesDirectory)"
+        echo "source branch is $(Build.SourceBranch)"
+        echo "deploy tartget is $(deployTarget)"
+        echo testabc
 
-# steps:
-# - task: UsePythonVersion@0
-#   inputs:
-#     versionSpec: '$(python.version)'
-#   displayName: 'Use Python $(python.version)'
 
-# - script: |
-#     python -m pip install --upgrade pip
-#     pip install -r requirements.txt
-#   displayName: 'Install dependencies'
 
-# - script: |
-#     pip install pytest pytest-azurepipelines
-#     pytest
-#   displayName: 'pytest'

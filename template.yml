@@ -1,0 +1,7 @@
+parameters:
+- name: yesNo
+  type: boolean
+  default: false
+
+steps:
+- script: echo ${{parameters.yesNo}}
