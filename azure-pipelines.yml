@@ -49,7 +49,7 @@ jobs:
         echo " current workspace is $(Agent.BuildDirectory)"
         echo "current dir is  $(Build.SourcesDirectory)"
         echo "source branch is $(Build.SourceBranch)"
-        echo "deploy tartget is $(deployTarget)"
+        echo "trigger branch is $(trigger_branch)"
         echo testabc
 
 
