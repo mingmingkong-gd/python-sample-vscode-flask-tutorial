@@ -14,7 +14,11 @@
 #       name: kmmtestrepo
 #       endpoint: ado-test
 
-
+variables:
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: 
+    deployTarget: master
+  ${{ if eq(variables['Build.SourceBranchName'], 'RE-11234') }}: 
+    deployTarget: dev
 
 
 
@@ -45,6 +49,7 @@ jobs:
         echo " current workspace is $(Agent.BuildDirectory)"
         echo "current dir is  $(Build.SourcesDirectory)"
         echo "source branch is $(Build.SourceBranch)"
+        echo "deploy tartget is $(deployTarget)"
         echo testabc
 
 
