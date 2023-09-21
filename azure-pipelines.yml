@@ -20,7 +20,8 @@
 
 trigger:
 - master
-- release
+
+
 
 
 
@@ -43,6 +44,7 @@ jobs:
         echo "the  Build.BuildNumber is $(Build.BuildNumber)"
         echo " current workspace is $(Agent.BuildDirectory)"
         echo "current dir is  $(Build.SourcesDirectory)"
+        echo "source branch is $(Build.SourceBranch)"
         echo testabc
 
 
