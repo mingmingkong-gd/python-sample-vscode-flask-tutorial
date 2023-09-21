@@ -23,7 +23,7 @@ variables:
 
 
 trigger:
-- $(trigger_branch)/*
+- master
 
 
 
