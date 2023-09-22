@@ -8,7 +8,7 @@ resources:
     - repository: python-sample-vscode-flask-tutorial
       type: github
       name: python-sample-vscode-flask-tutorial
-      endpoint: ado-test
+      endpoint: mingmingkong-gd
     # - repository: kmmtestrepo
     #   type: github
     #   name: kmmtestrepo
