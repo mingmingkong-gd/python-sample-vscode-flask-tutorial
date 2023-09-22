@@ -40,7 +40,15 @@ jobs:
   - checkout: self
   - checkout: kmmtestrepo-a
   - template: template.yml
-  
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your commands here
+        
+        echo 'Hello world'
+        pwd
+        cp $(System.DefaultWorkingDirectory)/python-sample-vscode-flask-tutorial/azure-pipelines.yml     $(System.DefaultWorkingDirectory)/kmmtestrepo
   - task: Bash@3
     inputs:
       targetType: 'inline'
