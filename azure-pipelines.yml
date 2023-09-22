@@ -53,6 +53,7 @@ jobs:
         echo "default working directory $(System.DefaultWorkingDirectory)"
         echo "build repo name $(Build.Repository.Name)" 
         echo "build source version $(Build.SourceVersion)"
+        echo " pipeline workspace $(Pipeline.Workspace)"
 
 
 
