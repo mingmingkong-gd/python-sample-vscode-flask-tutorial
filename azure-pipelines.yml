@@ -37,7 +37,7 @@ pool: Default
 jobs:
 - job: testb
   steps:
-  - checkout: self
+  # - checkout: self
   - checkout: kmmtestrepo-a
   - template: template.yml
   
