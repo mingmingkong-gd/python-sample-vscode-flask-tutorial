@@ -37,8 +37,8 @@ pool: Default
 jobs:
 - job: testb
   steps:
-  # - checkout: self
-  # - checkout: kmmtestrepo-a
+  - checkout: self
+  - checkout: kmmtestrepo-a
   - template: template.yml
   
   - task: Bash@3
@@ -51,6 +51,7 @@ jobs:
         echo "current dir is  $(Build.SourcesDirectory)"
         echo "source branch is $(Build.SourceBranch)"
         echo "trigger branch is $(trigger_branch)"
+        echo "default working directory $(System.DefaultWorkingDirectory)"
         echo testabc
 
 
