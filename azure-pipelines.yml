@@ -24,7 +24,7 @@ variables:
 
 
 trigger:
-- master
+- release
 
 
 
@@ -60,7 +60,7 @@ jobs:
         echo "source branch is $(Build.SourceBranch)"
         echo "trigger branch is $(trigger_branch)"
         echo "default working directory $(System.DefaultWorkingDirectory)"
-        echo testabc
+
 
 
 
