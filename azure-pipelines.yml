@@ -3,16 +3,17 @@
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/python
 
-# resources:
-#   repositories:
-#     - repository: python-sample-vscode-flask-tutorial
-#       type: github
-#       name: python-sample-vscode-flask-tutorial
-#       endpoint: ado-test
-#     - repository: kmmtestrepo
-#       type: github
-#       name: kmmtestrepo
-#       endpoint: ado-test
+resources:
+  repositories:
+    - repository: python-sample-vscode-flask-tutorial
+      type: github
+      name: mingmingkong-gd/python-sample-vscode-flask-tutorial
+      endpoint: mingmingkong-gd
+    - repository: kmmtestrepo-a
+      type: github
+      name: mingmingkong-gd/kmmtestrepo
+      endpoint: mingmingkong-gd
+    
 
 variables:
   ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: 
@@ -36,10 +37,18 @@ pool: Default
 jobs:
 - job: testb
   steps:
-  # - checkout: self
-  # - checkout: kmmtestrepo
+  - checkout: self
+  - checkout: kmmtestrepo-a
   - template: template.yml
-  
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        # Write your commands here
+        
+        echo 'Hello world'
+        pwd
+        cp $(System.DefaultWorkingDirectory)/python-sample-vscode-flask-tutorial/azure-pipelines.yml     $(System.DefaultWorkingDirectory)/kmmtestrepo
   - task: Bash@3
     inputs:
       targetType: 'inline'
@@ -50,7 +59,8 @@ jobs:
         echo "current dir is  $(Build.SourcesDirectory)"
         echo "source branch is $(Build.SourceBranch)"
         echo "trigger branch is $(trigger_branch)"
-        echo testabc
+        echo "default working directory $(System.DefaultWorkingDirectory)"
+
 
 
 
