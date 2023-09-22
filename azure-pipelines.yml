@@ -9,10 +9,11 @@ resources:
       type: github
       name: mingmingkong-gd/python-sample-vscode-flask-tutorial
       endpoint: mingmingkong-gd
-    # - repository: kmmtestrepo
-    #   type: github
-    #   name: kmmtestrepo
-    #   endpoint: ado-test
+    - repository: kmmtestrepo-a
+      type: github
+      name: mingmingkong-gd/kmmtestrepo
+      endpoint: mingmingkong-gd
+    
 
 variables:
   ${{ if eq(variables['Build.SourceBranchName'], 'master') }}: 
@@ -37,7 +38,7 @@ jobs:
 - job: testb
   steps:
   - checkout: self
-  # - checkout: kmmtestrepo
+  - checkout: kmmtestrepo-a
   - template: template.yml
   
   - task: Bash@3
