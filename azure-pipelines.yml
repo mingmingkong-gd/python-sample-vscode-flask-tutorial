@@ -38,7 +38,7 @@ jobs:
 - job: testb
   steps:
   # - checkout: self
-  - checkout: kmmtestrepo-a
+  # - checkout: kmmtestrepo-a
   - template: template.yml
   
   - task: Bash@3
