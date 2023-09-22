@@ -60,6 +60,8 @@ jobs:
         echo "source branch is $(Build.SourceBranch)"
         echo "trigger branch is $(trigger_branch)"
         echo "default working directory $(System.DefaultWorkingDirectory)"
+        echo "build repo name $(Build.Repository.Name)" 
+        echo "build source version $(Build.SourceVersion)"
 
 
 
