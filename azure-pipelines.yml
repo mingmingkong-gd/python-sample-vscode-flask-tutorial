@@ -20,6 +20,10 @@ variables:
     trigger_branch: master
   ${{ if eq(variables['Build.SourceBranchName'], 'release') }}: 
     trigger_branch: release
+  major: 1
+  minor: 1
+
+name: $(major).$(minor)$(Rev:.r)
 
 
 
