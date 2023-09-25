@@ -58,8 +58,8 @@ jobs:
         echo "build repo name $(Build.Repository.Name)" 
         echo "build source version $(Build.SourceVersion)"
         echo " pipeline workspace $(Pipeline.Workspace)"
-        echo "##vso[build.updatebuildnumber]$release_number"
-        echo "[DEBUG] $release_number"
+        echo "##vso[build.updatebuildnumber]rc2"
+        echo "the  Build.BuildNumber is $(Build.BuildNumber)"
 
 
 
