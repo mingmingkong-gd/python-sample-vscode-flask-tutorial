@@ -63,7 +63,7 @@ jobs:
         echo "Build.BuildId is $(Build.BuildId)"
         echo "Build.BuildUri is $(Build.BuildUri)"
         echo "project name is : $(System.TeamProject)"
-        echo "https://dev.azure.com/mingmingkong-org/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)"
+        echo "https://dev.azure.com/mingmingkong-org/$System.TeamProject/_build/results?buildId=$Build.BuildId"
         
 
 
