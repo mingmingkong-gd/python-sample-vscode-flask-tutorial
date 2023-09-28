@@ -62,6 +62,7 @@ jobs:
         echo "the  Build.BuildNumber is $(Build.BuildNumber)"
         echo "Build.BuildId is $(Build.BuildId)"
         echo "Build.BuildUri is $(Build.BuildUri)"
+        echo "project name is : $(System.TeamProject)"
         
 
 
