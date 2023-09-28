@@ -60,6 +60,9 @@ jobs:
         echo " pipeline workspace $(Pipeline.Workspace)"
         echo "##vso[build.updatebuildnumber]rc2"
         echo "the  Build.BuildNumber is $(Build.BuildNumber)"
+        echo "Build.BuildId is $(Build.BuildId)"
+        echo "Build.BuildUri is $(Build.BuildUri)"
+        
 
 
 
