@@ -64,7 +64,13 @@ jobs:
         echo "Build.BuildUri is $(Build.BuildUri)"
         echo "project name is : $(System.TeamProject)"
         echo "https://dev.azure.com/mingmingkong-org/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)"
-        
+
+        case "$(Build.SourceBranch)" in
+          refs/heads/master) echo "##vso[build.addbuildtag]Main" ;;
+          refs/heads/release/*) echo "##vso[build.addbuildtag]Release" ;;
+          refs/heads/hotfix/*) echo "##vso[build.addbuildtag]Hotfix" ;;
+          refs/pull/*/merge) echo "##vso[build.addbuildtag]PR" ;;
+        esac
 
 
 
