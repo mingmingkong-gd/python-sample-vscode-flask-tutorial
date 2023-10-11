@@ -1,7 +1,7 @@
 # Python package
 # Create and test a Python package on multiple Python versions.
 # Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python ff
 
 resources:
   repositories:
@@ -20,11 +20,26 @@ variables:
     trigger_branch: master
   ${{ if eq(variables['Build.SourceBranchName'], 'release') }}: 
     trigger_branch: release
+  major: 1
+  minor: 1
+
+name: $(major).$(minor)$(Rev:.r)
 
 
 
 trigger:
-- release
+  branches:
+    include:
+    - master
+    - release/*
+    - hotfix/*
+  paths:
+    exclude:
+    - azure-pipelines.yml
+pr:
+- master
+- release/*
+- hotfix/*
 
 
 
@@ -44,15 +59,6 @@ jobs:
     inputs:
       targetType: 'inline'
       script: |
-        # Write your commands here
-        
-        echo 'Hello world'
-        pwd
-        cp $(System.DefaultWorkingDirectory)/python-sample-vscode-flask-tutorial/azure-pipelines.yml     $(System.DefaultWorkingDirectory)/kmmtestrepo
-  - task: Bash@3
-    inputs:
-      targetType: 'inline'
-      script: |
         # Write your commands here       
         echo "the  Build.BuildNumber is $(Build.BuildNumber)"
         echo " current workspace is $(Agent.BuildDirectory)"
@@ -60,6 +66,23 @@ jobs:
         echo "source branch is $(Build.SourceBranch)"
         echo "trigger branch is $(trigger_branch)"
         echo "default working directory $(System.DefaultWorkingDirectory)"
+        echo "build repo name $(Build.Repository.Name)" 
+        echo "build source version $(Build.SourceVersion)"
+        echo " pipeline workspace $(Pipeline.Workspace)"
+        echo "##vso[build.updatebuildnumber]rc2"
+        echo "the  Build.BuildNumber is $(Build.BuildNumber)"
+        echo "Build.BuildId is $(Build.BuildId)"
+        echo "Build.BuildUri is $(Build.BuildUri)"
+        echo "project name is : $(System.TeamProject)"
+        echo "https://dev.azure.com/mingmingkong-org/$(System.TeamProject)/_build/results?buildId=$(Build.BuildId)"
+
+        case "$(Build.SourceBranch)" in
+          refs/heads/master) echo "##vso[build.addbuildtag]Main" ;;
+          refs/heads/release/*) echo "##vso[build.addbuildtag]Release" ;;
+          refs/heads/hotfix/*) echo "##vso[build.addbuildtag]Hotfix" ;;
+          refs/pull/*/merge) echo "##vso[build.addbuildtag]PR" ;;
+        esac
+    
 
 
 
